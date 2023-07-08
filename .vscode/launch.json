@@ -1,33 +1,52 @@
 {
-  // 使用 IntelliSense 了解相关属性。
-  // 悬停以查看现有属性的描述。
-  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  // 使用 IntelliSense 了解相关属性: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
       "type": "node",
       "request": "launch",
-      "name": "Start debugging for local",
+      "name": "Start debugging local",
       // "runtimeExecutable": "nodemon",
       "runtimeExecutable": "/usr/bin/proxychains",
       "runtimeArgs": [
-        // "--max-http-header-size",
-        // "163840"
         "-f",
-        "${workspaceFolder}/.vscode/proxychains.conf",
-        "nyarn", // alias nyarn=yarn # node
-        "dev",
+        "/etc/proxychains.conf",
+        "nodemon",
+        // "--max-http-header-size",
+        // "163840",
+        "--exec",
+        "ts-node",
       ],
-      // "program": "${workspaceFolder}/app.js",
+      "program": "${workspaceFolder}/server/boot.ts",
       "env": {
-        // "OPENAI_API_KEY": "",
-        // "CODE": "",
-        // "PROXY_URL": "",
-        // 写死了? 就算使用proxychains启动也还要设置? see: ./app/common.ts
-        // "BASE_URL": "https://chatgpt1.nextweb.fun/api/proxy",
+        "REDIS_MODE": "single",
+        "REDIS_USERNAME": "default",
+        // "REDIS_PASSWORD": "zzx!@#$%",
+        "REDIS_PASSWORD": "123456",
+        "REDIS_SINGLE_HOST": "127.0.0.1:6379",
+        "REDIS_CLUSTER_NODES": "127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381,127.0.0.1:7379,127.0.0.1:7380,127.0.0.1:7381",
+        "OPENAI_API_KEY": "sk-xx",
+        // "OPENAI_API_KEY": "sk-xx",
+        // "CODE": "123456", // 登录密码
+        // "PROXY_URL": "http://127.0.0.1:8118",
+        // // 默认为 https://api.openai.com, 本地调试时设为 http 代理地址(支持 path 的代理) see: ./app/common.ts
+        // // 作者提供共享代理服务: https://chatgpt1.nextweb.fun/api/proxy
+        // "BASE_URL": "",
+        // // Specify OpenAI organization ID.(optional)
+        // // Default: Empty
+        // // If you do not want users to input their own API key, set this value to 1.
         // "OPENAI_ORG_ID": "",
+        // // (optional)
+        // // Default: Empty
+        // // If you do not want users to input their own API key, set this value to 1.
         // "HIDE_USER_API_KEY": "",
+        // // (optional)
+        // // Default: Empty
+        // // If you do not want users to use GPT-4, set this value to 1.
         // "DISABLE_GPT4": "",
+        // // (optional)
+        // // Default: Empty
+        // // If you do not want users to query balance, set this value to 1.
         // "HIDE_BALANCE_QUERY": "",
       },
       "envFile": "${workspaceFolder}/.env.local",

@@ -10,7 +10,8 @@ const bn: PartialLocaleType = {
   Auth: {
     Title: "একটি অ্যাক্সেস কোড প্রয়োজন",
     Tips: "নীচে অ্যাক্সেস কোড ইনপুট করুন",
-    Input: "অ্যাক্সেস কোড",
+    UserNameInput: "অ্যাক্সেস কোড",
+    PasswordInput: "অ্যাক্সেস কোড",
     Confirm: "নিশ্চিত করুন",
     Later: "পরে",
   },

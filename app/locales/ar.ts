@@ -10,7 +10,8 @@ const ar: PartialLocaleType = {
   Auth: {
     Title: "تحتاج إلى رمز الوصول",
     Tips: "يرجى إدخال رمز الوصول أدناه",
-    Input: "رمز الوصول",
+    UserNameInput: "رمز الوصول",
+    PasswordInput: "رمز الوصول",
     Confirm: "تأكيد",
     Later: "لاحقًا",
   },

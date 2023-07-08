@@ -8,7 +8,7 @@ import Locale from "../locales";
 
 import BotIcon from "../icons/bot.svg";
 
-export function AuthPage() {
+export default function AuthPage() {
   const navigate = useNavigate();
   const access = useAccessStore();
 
@@ -25,8 +25,18 @@ export function AuthPage() {
 
       <input
         className={styles["auth-input"]}
+        type="text"
+        placeholder={Locale.Auth.UserNameInput}
+        value={access.userName}
+        onChange={(e) => {
+          access.updateUserName(e.currentTarget.value);
+        }}
+      />
+
+      <input
+        className={styles["auth-input"]}
         type="password"
-        placeholder={Locale.Auth.Input}
+        placeholder={Locale.Auth.PasswordInput}
         value={access.accessCode}
         onChange={(e) => {
           access.updateCode(e.currentTarget.value);
@@ -39,7 +49,7 @@ export function AuthPage() {
           type="primary"
           onClick={goHome}
         />
-        <IconButton text={Locale.Auth.Later} onClick={goHome} />
+        {/* <IconButton text={Locale.Auth.Later} onClick={goHome} /> */}
       </div>
     </div>
   );

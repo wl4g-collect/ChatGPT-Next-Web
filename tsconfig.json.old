@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "ES2020",
+    "target": "ES2016",
     "lib": [
       "dom",
       "dom.iterable",
@@ -13,8 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    // https://www.typescriptlang.org/tsconfig#moduleResolution
-    "module": "NodeNext",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -35,10 +34,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "server/**.ts",
-    "server/**/*.ts",
     ".next/types/**/*.ts",
-    "app/calcTextareaHeight.ts", "pages/_app.js", "pages/_app.tsx.bak", "pages/auth/login.tsx.bak", "pages/index.tsx.bak",
+    "app/calcTextareaHeight.ts",
+    "app/api/common.js",
   ],
   "exclude": [
     "node_modules",
