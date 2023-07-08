@@ -60,5 +60,8 @@
   },
   "resolutions": {
     "lint-staged/yaml": "^2.2.2"
+  },
+  "browser": {
+    "child_process": false
   }
 }

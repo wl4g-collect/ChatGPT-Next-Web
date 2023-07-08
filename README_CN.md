@@ -113,7 +113,7 @@ OpenAI 接口代理 URL，如果你手动配置了 openai 接口代理，请填�
 ```
 OPENAI_API_KEY=<your api key here>
 
-# 中国大陆用户，可以使用本项目自带的代理进行开发，你也可以自由选择其他代理地址
+# (Optional)中国大陆用户，可以使用本项目自带的代理进行开发，你也可以自由选择其他代理地址
 BASE_URL=https://chatgpt1.nextweb.fun/api/proxy
 ```
 
@@ -122,6 +122,23 @@ BASE_URL=https://chatgpt1.nextweb.fun/api/proxy
 1. 安装 nodejs 18 和 yarn，具体细节请询问 ChatGPT；
 2. 执行 `yarn install && yarn dev` 即可。⚠️ 注意：此命令仅用于本地开发，不要用于部署！
 3. 如果你想本地部署，请使用 `yarn install && yarn build && yarn start` 命令，你可以配合 pm2 来守护进程，防止被杀死，详情询问 ChatGPT。
+4. 安装 proxychains `sudo apt install proxychains-ng`，配置：
+```bash
+# see:https://blogs.wl4g.com/archives/121
+export localIp=$(ip a | grep -E '^[a-zA-Z0-9]+: (em|eno|enp|ens|eth|wlp|en)+[0-9]' -A2 | grep inet | awk -F ' ' '{print $2}' | cut -f 1 -d / | tail -n 1)
+sudo cat <<EOF > .vscode/proxychains.conf
+strict_chain
+proxy_dns
+remote_dns_subnet 224
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+#localnet 127.0.0.0/255.0.0.0
+#localnet ::1/128
+[ProxyList]
+http ${localIp} 8118
+EOf
+```
+5. 本地启动运行 `proxychains -f /etc/proxychains.conf yarn dev`
 
 ## 部署
 

@@ -1,0 +1,46 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Start debugging for local",
+      // "runtimeExecutable": "nodemon",
+      "runtimeExecutable": "/usr/bin/proxychains",
+      "runtimeArgs": [
+        // "--max-http-header-size",
+        // "163840"
+        "-f",
+        "${workspaceFolder}/.vscode/proxychains.conf",
+        "nyarn", // alias nyarn=yarn # node
+        "dev",
+      ],
+      // "program": "${workspaceFolder}/app.js",
+      "env": {
+        // "OPENAI_API_KEY": "",
+        // "CODE": "",
+        // "PROXY_URL": "",
+        // 写死了? 就算使用proxychains启动也还要设置? see: ./app/common.ts
+        // "BASE_URL": "https://chatgpt1.nextweb.fun/api/proxy",
+        // "OPENAI_ORG_ID": "",
+        // "HIDE_USER_API_KEY": "",
+        // "DISABLE_GPT4": "",
+        // "HIDE_BALANCE_QUERY": "",
+      },
+      "envFile": "${workspaceFolder}/.env.local",
+      "restart": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "args": []
+    },
+  ],
+  "compounds": [
+    {
+      "name": "Debug on both side",
+      "configurations": []
+    }
+  ]
+}
