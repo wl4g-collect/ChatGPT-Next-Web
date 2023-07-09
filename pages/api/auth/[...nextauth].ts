@@ -6,6 +6,7 @@ import prisma from "../../util/prisma";
 import { sendVerificationRequest } from "../../util/sendVerificationRequest";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
+// https://juejin.cn/post/7155514465591984136
 export const authOptions: NextAuthOptions = {
   // debug: true,
   adapter: PrismaAdapter(prisma),
